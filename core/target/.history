@@ -1,0 +1,17 @@
+run
+~run
+test
+compile
+run
+test
+compile
+test
+version
+--scala
+test
+compile
+run
+compile
+test
+run
+test
