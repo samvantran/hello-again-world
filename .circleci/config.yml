@@ -34,7 +34,8 @@ jobs:
 
       - deploy:
           command: |
-            if [ "${CIRCLE_BRANCH}" == "develop" ]; then
+            if [ "${CIRCLE_BRANCH}" == "deploy" ]; then
+              pip install awscli --upgrade --user
               aws s3 sync site s3://svt-dev-hello-world
             fi
     
