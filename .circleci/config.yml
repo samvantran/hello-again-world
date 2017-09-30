@@ -31,3 +31,10 @@ jobs:
         
       # run tests!
       - run: cat /dev/null | sbt test:test
+
+      - deploy:
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "develop" ]; then
+              aws s3 sync site s3://svt-dev-hello-world
+            fi
+    
