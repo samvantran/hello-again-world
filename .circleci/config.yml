@@ -31,3 +31,11 @@ jobs:
         
       # run tests!
       - run: cat /dev/null | sbt test:test
+
+  deploy:
+    name: Deploy to S3 if tests pass and branch is develop
+    command: |
+      if [ "${CIRCLE_BRANCH}" == "develop" ]; then
+        aws s3 sync .gitignore s3://svt-dev-hello-world
+      fi
+    
