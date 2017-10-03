@@ -4,8 +4,6 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:8-jdk
-      - image: circleci/python:3.6
-        command: [sudo, pip, install, awscli]
       
     working_directory: ~/repo
 
@@ -23,6 +21,10 @@ jobs:
           - v1-dependencies-{{ checksum "build.sbt" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
+
+      - run: apt-get install python-pip python-dev build-essential
+      - run: pip install --upgrade pip
+      - run: pip install awscli
 
       - run: cat /dev/null | sbt test:compile
 
