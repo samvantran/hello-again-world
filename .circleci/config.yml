@@ -22,7 +22,7 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: apt-get install python-pip python-dev build-essential
+      - run: sudo apt-get install python-pip python-dev build-essential
       - run: pip install --upgrade pip
       - run: pip install awscli
 
