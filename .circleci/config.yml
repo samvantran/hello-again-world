@@ -4,6 +4,7 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:8-jdk
+      - image: circleci/python:3.6.1
       
     working_directory: ~/repo
 
@@ -14,6 +15,7 @@ jobs:
     
     steps:
       - checkout
+      - run: sudo pip install awscli
 
       # Download and cache dependencies
       - restore_cache:
@@ -35,7 +37,6 @@ jobs:
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "deploy" ]; then
-              pip install awscli --upgrade --user
               aws s3 sync site s3://svt-dev-hello-world
             fi
     
