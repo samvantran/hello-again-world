@@ -4,7 +4,8 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:8-jdk
-      - image: circleci/python:3.6.1
+      - image: circleci/python:3.6
+        command: [pip, install, awscli]
       
     working_directory: ~/repo
 
@@ -15,7 +16,6 @@ jobs:
     
     steps:
       - checkout
-      - run: sudo pip install awscli
 
       # Download and cache dependencies
       - restore_cache:
