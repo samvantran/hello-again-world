@@ -5,7 +5,7 @@ jobs:
       # specify the version you desire here
       - image: circleci/openjdk:8-jdk
       - image: circleci/python:3.6
-        command: [pip, install, awscli]
+        command: [sudo, pip, install, awscli]
       
     working_directory: ~/repo
 
